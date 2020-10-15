@@ -3,8 +3,8 @@ require 'net/http'
 require 'uri'
 require 'pry'
 
-WATCH_CHANNEL = "#works_htty"
-INTERVAL = 10
+WATCH_CHANNEL = ENV['WATCH_CHANNEL']
+INTERVAL = ENV['INTERVAL']
 APP_ID = ENV['APP_ID']
 TOKEN = ENV['TOKEN']
 SANSAN_API_KEY = ENV['SANSAN_API_KEY']
