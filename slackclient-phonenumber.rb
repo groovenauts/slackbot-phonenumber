@@ -5,7 +5,7 @@ require 'pry'
 
 WATCH_CHANNEL = "#works_htty"
 INTERVAL = 10
-BOT_ID = ENV['BOT_ID']
+APP_ID = ENV['APP_ID']
 TOKEN = ENV['TOKEN']
 SANSAN_API_KEY = ENV['SANSAN_API_KEY']
 
@@ -45,7 +45,7 @@ while true do
   time = Time.now.to_f
   messages = client.conversations_history(channel: WATCH_CHANNEL, latest: time, oldest: prev_time)["messages"]
   messages.each do |m|
-    if m["bot_id"] != BOT_ID
+    if m["bot_profile"] == nil || (m["bot_profile"]["app_id"] != APP_ID)
       if m["text"] =~ /(\+[\-\d]{3,}\d)/
         n = $1.gsub(/^\+81/, '0')
         result = phonenumber_search(n)
