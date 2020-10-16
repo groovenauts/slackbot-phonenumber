@@ -41,7 +41,7 @@ client.on :hello do
 end
 
 client.on :message do |data|
-  case data.text
+  case data.text+data.attachments.to_s
   when 'bot hi' then
     client.message(channel: data.channel, text: "Hi <@#{data.user}>!")
   when /(\+[\-\d]{3,}\d)/ then
