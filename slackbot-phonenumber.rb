@@ -29,7 +29,7 @@ def phonenumber_search(n)
     j = JSON(response.body)['data']
     if j.size > 0
       d = j.first
-      "#{d['companyName']+d['departmentName']}の#{d['lastName']} #{d['firstName']}様 tel:#{d['tel']}"
+      "#{d['companyName']} #{d['departmentName']} #{d['lastName']} #{d['firstName']}様 tel:#{d['tel']}"
     else
       nil
     end
