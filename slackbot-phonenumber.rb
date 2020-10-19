@@ -29,7 +29,7 @@ def phonenumber_search(n)
     j = JSON(response.body)['data']
     if j.size > 0
       d = j.first
-      "#{d['departmentName']}の#{d['lastName']} #{d['firstName']}様 tel:#{d['tel']}"
+      "#{d['companyName']+d['departmentName']}の#{d['lastName']} #{d['firstName']}様 tel:#{d['tel']}"
     else
       nil
     end
@@ -41,7 +41,7 @@ client.on :hello do
 end
 
 client.on :message do |data|
-  case data.text+data.attachments.to_s
+  case data.attachments ? data.text+data.attachments.to_s : data.text
   when 'bot hi' then
     client.message(channel: data.channel, text: "Hi <@#{data.user}>!")
   when /(\+[\-\d]{3,}\d)/ then
