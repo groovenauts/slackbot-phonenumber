@@ -49,7 +49,7 @@ client.on :message do |data|
     result = phonenumber_search(n)
     result = "なし" unless result
     client.message(channel: data.channel,
-               text: "Sansan 検索結果: #{result}\njpnumber検索: https://www.jpnumber.com/searchnumber.do?number=#{n}",
+               text: "Sansan 検索結果: #{result}\n電話帳ナビ検索: https://www.telnavi.jp/phone/#{n}",
                thread_ts: data.thread_ts || data.ts)
   end
 end
