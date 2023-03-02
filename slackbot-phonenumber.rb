@@ -44,7 +44,7 @@ client.on :message do |data|
   case data.attachments ? data.text+data.attachments.to_s : data.text
   when 'bot hi' then
     client.message(channel: data.channel, text: "Hi <@#{data.user}>!")
-  when /(\+[\-\d]{3,}\d)/ then
+  when /(\+81[\-\d]{1,}\d)/ then
     n = $1.gsub(/^\+81/, '0')
     result = phonenumber_search(n)
     result = "なし" unless result
